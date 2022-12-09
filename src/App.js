@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 
-function App() {
+import { AppProivder } from "./context/AppContext";
+
+import Budget from "./components/Budget";
+import ExpenseTotal from "./components/Remaining";
+import Spent from "./components/ExpenseTotal";
+import ExpenseList from "./components/ExpenseList";
+import AddExpenseForm from "./components/AddExpenseForm";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppProivder>
+      <div className="container">
+        <h1 className="mt-3">Budget Tracker</h1>
+        <div className="row mt-3">
+          <div className="col-sm">
+            <Budget />
+          </div>
+          <div className="col-sm">
+            <ExpenseTotal />
+          </div>
+          <div className="col-sm">
+            <Spent />
+          </div>
+        </div>
+        <h3 className="mt-3">Expenses</h3>
+        <div className="row mt-3">
+          <ExpenseList />
+        </div>
+        <h3 className="mt-3">Add Expense</h3>
+        <div className="mt-3">
+          <div className="col-sm">
+            <AddExpenseForm />
+          </div>
+        </div>
+      </div>
+    </AppProivder>
   );
-}
+};
 
 export default App;
